@@ -1,4 +1,3 @@
-# data.py — in-memory data store
 from datetime import date
 
 events = [
@@ -6,20 +5,20 @@ events = [
         "id": 1,
         "title": "Conferencia de Python",
         "slug": "conferencia-python",
-        "description": "Introducción a IA y desarrollo web con Flask.",
+        "description": "desarrollo web con Flask.",
         "date": "2025-09-15",
         "time": "14:00",
         "location": "Auditorio Principal",
         "category": "Tecnología",
         "max_attendees": 50,
         "attendees": [
-            {"name": "Juan Pérez", "email": "juan@example.com"}
+            {"name": "Juan Gaviria", "email": "juan@gmail.com"}
         ],
         "featured": True
     },
     {
         "id": 2,
-        "title": "Partido Interfacultades",
+        "title": "Partido Futbol",
         "slug": "partido-interfacultades",
         "description": "Torneo deportivo amistoso entre facultades.",
         "date": "2025-09-10",

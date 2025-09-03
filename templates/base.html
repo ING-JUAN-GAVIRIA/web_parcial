@@ -33,10 +33,13 @@
     {% endwith %}
   </header>
   <main class="container">
-    {% block content %}{% endblock %}
-  </main>
-  <footer class="container footer">
-    <small>Flask + Flask-WTF + Jinja2 · Datos en memoria</small>
-  </footer>
-</body>
-</html>
+  <a href="{{ url_for('index') }}" class="btn">← Eventos</a>
+  {% block content %}{% endblock %}
+</main>
+
+<footer class="footer">
+  <div class="footer-container">
+    <p>© 2025 Gestor de Eventos</p>
+    <p>Desarrollado por <strong>Juan Gaviria</strong> & <strong>Juan Perea</strong></p>
+  </div>
+</footer>
