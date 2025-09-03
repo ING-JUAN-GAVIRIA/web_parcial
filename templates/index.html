@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Eventos{% endblock %}
+{% block content %}
+  {% if selected_category %}
+    <h2>Eventos en: {{ selected_category }}</h2>
+  {% else %}
+    <h2>Próximos eventos</h2>
+  {% endif %}
+
+  {% if featured and not selected_category %}
+    <section>
+      <h3>Destacados</h3>
+      <div class="grid">
+        {% for e in featured %}
+          <article class="card featured">
+            <h4><a href="{{ url_for('event_detail', slug=e.slug) }}">{{ e.title }}</a></h4>
+            <p>{{ e.date }} · {{ e.time }} · {{ e.location }}</p>
+            <p class="badge">{{ e.category }}</p>
+          </article>
+        {% endfor %}
+      </div>
+    </section>
+    <hr>
+  {% endif %}
+
+  <div class="grid">
+    {% for e in events %}
+      <article class="card">
+        <h4><a href="{{ url_for('event_detail', slug=e.slug) }}">{{ e.title }}</a></h4>
+        <p>{{ e.description[:120] }}{% if e.description|length > 120 %}...{% endif %}</p>
+        <p>{{ e.date }} · {{ e.time }} · {{ e.location }}</p>
+        <p class="badge">{{ e.category }}</p>
+        <a class="btn" href="{{ url_for('event_detail', slug=e.slug) }}">Ver detalle</a>
+      </article>
+    {% else %}
+      <p>No hay eventos para mostrar.</p>
+    {% endfor %}
+  </div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Registrarse · {{ event.title }}{% endblock %}
+{% block content %}
+  <h2>Registro a: {{ event.title }}</h2>
+  <p>Cupos disponibles: <strong>{{ remaining }}</strong></p>
+  <form method="post" class="form">
+    {{ form.hidden_tag() }}
+    <div class="field">{{ form.name.label }} {{ form.name(size=40) }}</div>
+    <div class="field">{{ form.email.label }} {{ form.email(size=40) }}</div>
+    <button class="btn" type="submit">Registrarme</button>
+  </form>
+{% endblock %}

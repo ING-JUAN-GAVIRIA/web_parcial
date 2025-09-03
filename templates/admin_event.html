@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Crear evento · Eventos{% endblock %}
+{% block content %}
+  <h2>Nuevo evento</h2>
+  <form method="post" class="form">
+    {{ form.hidden_tag() }}
+    <div class="field">{{ form.title.label }} {{ form.title(size=40) }}</div>
+    <div class="field">{{ form.slug.label }} {{ form.slug(size=40) }}
+      <small>Deja vacío para generarlo automáticamente.</small>
+    </div>
+    <div class="field">{{ form.description.label }} {{ form.description(rows=4, cols=60) }}</div>
+    <div class="row">
+      <div class="field">{{ form.date.label }} {{ form.date() }}</div>
+      <div class="field">{{ form.time.label }} {{ form.time() }}</div>
+    </div>
+    <div class="field">{{ form.location.label }} {{ form.location(size=40) }}</div>
+    <div class="row">
+      <div class="field">{{ form.category.label }} {{ form.category() }}</div>
+      <div class="field">{{ form.max_attendees.label }} {{ form.max_attendees(min=1) }}</div>
+      <div class="field checkbox">{{ form.featured() }} {{ form.featured.label }}</div>
+    </div>
+    <button class="btn" type="submit">Crear</button>
+  </form>
+{% endblock %}

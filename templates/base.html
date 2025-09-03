@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Gestor de eventos{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <header class="container">
+    <nav class="nav">
+      <a href="{{ url_for('index') }}" class="brand">Eventos</a>
+      <div class="nav-right">
+        <a href="{{ url_for('admin_event') }}" class="btn">+ Nuevo evento</a>
+        <div class="dropdown">
+          <button class="btn">Categorías ▾</button>
+          <div class="dropdown-content">
+            {% for c in CATEGORIES %}
+              <a href="{{ url_for('by_category', category=c) }}">{{ c }}</a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </nav>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul class="flashes">
+          {% for cat, msg in messages %}
+            <li class="flash {{ cat }}">{{ msg }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+  </header>
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="container footer">
+    <small>Flask + Flask-WTF + Jinja2 · Datos en memoria</small>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}{{ event.title }} · Eventos{% endblock %}
+{% block content %}
+  <article class="card">
+    <h2>{{ event.title }}</h2>
+    <p class="badge">{{ event.category }}</p>
+    <p><strong>Cuándo:</strong> {{ event.date }} — {{ event.time }}</p>
+    <p><strong>Dónde:</strong> {{ event.location }}</p>
+    <p>{{ event.description }}</p>
+    <p><strong>Cupo:</strong> {{ event.max_attendees }} · <strong>Disponibles:</strong> {{ remaining }}</p>
+    <a class="btn" href="{{ url_for('register', slug=event.slug) }}">Registrarme</a>
+  </article>
+
+  <section class="card">
+    <h3>Asistentes ({{ event.attendees|length }})</h3>
+    <ul>
+      {% for a in event.attendees %}
+        <li>{{ a.name }} — <small>{{ a.email }}</small></li>
+      {% else %}
+        <li>Aún no hay asistentes registrados.</li>
+      {% endfor %}
+    </ul>
+  </section>
+{% endblock %}
